@@ -5,8 +5,12 @@ public class Main {
 	private final static String name = "anonymous";;
 	private final static String password = "";
 
-	public static void main(String[] args) {
-		ftpfilesUtils utils = new ftpfilesUtils(link, name, password);
+	public static void main(String[] args) throws Throwable {
+
+		ftpFilesUtils utils = new ftpFilesUtils();
+		utils.connect(link, name, password);
+		utils.ListOfFilesInFTPServer(utils.getFTPClient(), utils.getDirectory());
+		utils.logOut();
 
 	}
 
