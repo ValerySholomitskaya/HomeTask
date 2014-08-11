@@ -2,11 +2,34 @@ package com.epam.Valery_Sholomitskaya.java.lesson1.task6;
 
 public class Main {
 
-	/**
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		try {
+			NotebookManager notebookManager = new NotebookManager();
+			notebookManager.addRecord("1");
+			notebookManager.addRecord("2");
+			notebookManager.addRecord("3");
+			notebookManager.lookAllRecords();
+			System.out.println("  ");
+			notebookManager.deleteRecordById(2);
+			notebookManager.lookAllRecords();
+			notebookManager.addRecord("2");
+			notebookManager.deleteRecordByText("2");
+			System.out.println("  ");
+			notebookManager.lookAllRecords();
+			notebookManager.editRecordById(1, "aaa");
+			System.out.println("  ");
+			notebookManager.lookAllRecords();
+			notebookManager.editRecordById(1, "111");
+			System.out.println("  ");
+			notebookManager.lookAllRecords();
+			
+
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+
+		}
+		
 
 	}
 
