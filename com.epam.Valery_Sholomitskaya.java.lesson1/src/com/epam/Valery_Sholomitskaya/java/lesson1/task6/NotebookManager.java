@@ -18,28 +18,16 @@ public class NotebookManager {
 	 * add record into notebook.
 	 * 
 	 * @param recordOfUser
-	 *            recordOfUser text of record
-	 * @param id
-	 *            number of record
-	 * @throws IllegalArgumentException
-	 *             ("incorrect id") if id is incorrect
-	 * @throws IllegalArgumentException
-	 *             ("such id already exist") if id of record already exist
+	 *            text of record
 	 **/
-	public void addRecord(String recordOfUser, int id) {
-		if (id <= 0) {
-			throw new IllegalArgumentException("incorrect id");
-		}
-		for (Record element : notebook.getArrayOfRecords()) {
-			if (element.getId() == id) {
-				throw new IllegalArgumentException("such id already exist");
-			}
-		}
+	public void addRecord(String recordOfUser) {
 
 		Record record = new Record();
 		record.setRecord(recordOfUser);
+		int id = notebook.getArrayOfRecords().size() + 1;
 		record.setId(id);
 		notebook.setArrayOfRecords(record);
+
 	}
 
 	/**
@@ -55,13 +43,24 @@ public class NotebookManager {
 			throw new IllegalArgumentException("incorrect id");
 		}
 		boolean result = false;
-		for (Record element : notebook.getArrayOfRecords()) {
-			if (element.getId() == id) {
-				notebook.getArrayOfRecords().remove(element);
+		int deleteId = -1;
+		for (int i = 0; i < notebook.getArrayOfRecords().size(); i++) {
+			if (notebook.getArrayOfRecords().get(i).getId() == id) {
+				notebook.getArrayOfRecords().remove(
+						notebook.getArrayOfRecords().get(i).getRecord());
+				notebook.getArrayOfRecords().remove(
+						notebook.getArrayOfRecords().get(i).getId());
 				result = true;
-
+				deleteId = i;
 			}
 		}
+		if (result == true) {
+			for (int j = deleteId; j < notebook.getArrayOfRecords().size(); j++) {
+				notebook.getArrayOfRecords().get(j).setId(deleteId);
+				deleteId++;
+			}
+		}
+
 		if (result == false) {
 
 			System.out.println("there is no record with such id");
@@ -74,8 +73,6 @@ public class NotebookManager {
 	 * 
 	 * @param text
 	 *            text of record
-	 * @throws IllegalArgumentException
-	 *             ("incorrect id") if id is incorrect
 	 **/
 	public void deleteRecordByText(String text) {
 
@@ -130,7 +127,7 @@ public class NotebookManager {
 	 * @param newRecord
 	 *            new text of record
 	 * @param oldRecord
-	 *           text of record by which we find record
+	 *            text of record by which we find record
 	 * @throws IllegalArgumentException
 	 *             ("incorrect id") if id is incorrect
 	 **/

@@ -2,7 +2,6 @@ package com.epam.Valery_Sholomitskaya.java.lesson1.task6;
 
 public class Main {
 
-	
 	public static void main(String[] args) {
 		try {
 			NotebookManager notebookManager = new NotebookManager();
@@ -13,23 +12,21 @@ public class Main {
 			System.out.println("  ");
 			notebookManager.deleteRecordById(2);
 			notebookManager.lookAllRecords();
-			notebookManager.addRecord("2");
-			notebookManager.deleteRecordByText("2");
+			notebookManager.addRecord("25");
+			notebookManager.deleteRecordByText("1");
 			System.out.println("  ");
 			notebookManager.lookAllRecords();
 			notebookManager.editRecordById(1, "aaa");
 			System.out.println("  ");
 			notebookManager.lookAllRecords();
-			notebookManager.editRecordById(1, "111");
+			notebookManager.editRecordByText("25", "rty");
 			System.out.println("  ");
 			notebookManager.lookAllRecords();
-			
 
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 
 		}
-		
 
 	}
 
