@@ -3,7 +3,6 @@ package entity;
 public abstract class Plane {
 
 	private String name;// имя самолета
-	private String specialInstructions;//особые указания для полета самолета
 	private int range;// топливо
 	private int fuel;// дальность полета
 	private int stuffSeatings;//
@@ -11,7 +10,7 @@ public abstract class Plane {
 	private int weight;// грузоподьемность
 
 	public Plane(String name, int range, int fuel, int stuffSeatings) {
-		
+
 		if (stuffSeatings < 0) {
 			throw new IllegalArgumentException(
 					"stuffSeatings<0. its impossible to create such plane. ");
@@ -30,7 +29,6 @@ public abstract class Plane {
 		this.fuel = fuel;
 		this.capacity = stuffSeatings;
 		this.weight = 0;
-		this.specialInstructions=null;
 	}
 
 	public abstract void fly();
@@ -41,14 +39,6 @@ public abstract class Plane {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getSpecialInstructions() {
-		return specialInstructions;
-	}
-
-	public void setSpecialInstructions(String specialInstructions) {
-		this.specialInstructions = specialInstructions;
 	}
 
 	public int getRange() {
@@ -90,7 +80,5 @@ public abstract class Plane {
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-
-
 
 }

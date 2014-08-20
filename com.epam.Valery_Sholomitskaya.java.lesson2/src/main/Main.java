@@ -38,9 +38,10 @@ public class Main {
 		System.out.println("Planes Sorted By Range: ");
 		lookAllPlanes(airportManager.compareByRange());
 		System.out.println("Planes lies in range by fuel: ");
-		lookAllPlanes(airportManager.findByFuel(11, 12));
-		//airportManager.flyAllPlanes();
+		lookAllPlanes(airportManager.findByFuel(1, 13));
+		airportManager.flyAllPlanes();
 		airportManager.flyAircraftPlanes();
+		airportManager.flyFreighterPlanes();
 
 	}
 

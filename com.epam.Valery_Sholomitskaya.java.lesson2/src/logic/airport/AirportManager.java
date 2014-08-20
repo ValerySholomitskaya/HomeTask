@@ -99,6 +99,7 @@ public class AirportManager {
 		}
 		List<Plane> ListByFuel = new ArrayList<Plane>();
 		int first = 0;
+		int last = 0;
 		for (int i = 0; i < compareByFuel().size(); i++) {
 			if (firstFuel < compareByFuel().get(0).getFuel()) {
 				first = 0;
@@ -109,11 +110,22 @@ public class AirportManager {
 				break;
 			}
 		}
-		for (int i = first; i < compareByFuel().size(); i++) {
-			if (compareByFuel().get(i).getFuel() <= lastFuel) {
-				ListByFuel.add(compareByFuel().get(i));
+		for (int i = compareByFuel().size(); i >= 0; i--) {
+
+			if (lastFuel > compareByFuel().get(compareByFuel().size() - 1)
+					.getFuel()) {
+				last = compareByFuel().size();
+				break;
+			}
+			if (compareByFuel().get(i - 1).getFuel() <= lastFuel) {
+				last = i;
+				break;
 			}
 		}
+		for (int i = first; i < last; i++) {
+			ListByFuel.add(compareByFuel().get(i));
+		}
+
 		return ListByFuel;
 	}
 
@@ -140,23 +152,23 @@ public class AirportManager {
 		}
 	}
 
-//функция полета грузового самолета	
+	// функция полета грузового самолета
 	public void flyFreighterPlanes() {
 		for (Plane ob : airport.getPlanes()) {
-			if (ob.getClass() == Freighter.class){
-			ob.fly();
-			break;
+			if (ob.getClass() == Freighter.class) {
+				ob.fly();
+				break;
 			}
 		}
 	}
-	
-	//функция полета пасажирского самолета	
-		public void flyAircraftPlanes() {
-			for (Plane ob : airport.getPlanes()) {
-				if (ob.getClass() == Aircraft.class){
+
+	// функция полета пасажирского самолета
+	public void flyAircraftPlanes() {
+		for (Plane ob : airport.getPlanes()) {
+			if (ob.getClass() == Aircraft.class) {
 				ob.fly();
 				break;
-				}
 			}
 		}
+	}
 }
