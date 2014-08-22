@@ -31,7 +31,7 @@ public abstract class Plane {
 		this.weight = 0;
 	}
 
-	public abstract void fly();
+	public abstract void soundOfFly();
 
 	public String getName() {
 		return name;
@@ -79,6 +79,53 @@ public abstract class Plane {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+
+	@Override
+	public String toString() {
+		return "Plane [name=" + name + ", range=" + range + ", fuel=" + fuel
+				+ ", stuffSeatings=" + stuffSeatings + ", capacity=" + capacity
+				+ ", weight=" + weight + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + capacity;
+		result = prime * result + fuel;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + range;
+		result = prime * result + stuffSeatings;
+		result = prime * result + weight;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Plane other = (Plane) obj;
+		if (capacity != other.capacity)
+			return false;
+		if (fuel != other.fuel)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (range != other.range)
+			return false;
+		if (stuffSeatings != other.stuffSeatings)
+			return false;
+		if (weight != other.weight)
+			return false;
+		return true;
 	}
 
 }

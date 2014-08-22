@@ -1,8 +1,7 @@
 package entity;
 
-
-
-import logic.airport.Sound;
+import constant.namesOfSounds;
+import utils.SoundCreator;
 
 public class Freighter extends Plane {
 
@@ -20,8 +19,9 @@ public class Freighter extends Plane {
 
 	}
 
-	public void fly() {
-		Sound.playSound("2.wav").join();
+	public void soundOfFly() {
+		SoundCreator sound = new SoundCreator();
+		sound.playSound(namesOfSounds.freighter_sound.getPath());
 	}
 
 	public int getFreight() {
@@ -30,6 +30,33 @@ public class Freighter extends Plane {
 
 	public void setFreight(int freight) {
 		this.freight = freight;
+	}
+
+	@Override
+	public String toString() {
+		return "Freighter [freight=" + freight + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + freight;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Freighter other = (Freighter) obj;
+		if (freight != other.freight)
+			return false;
+		return true;
 	}
 
 }

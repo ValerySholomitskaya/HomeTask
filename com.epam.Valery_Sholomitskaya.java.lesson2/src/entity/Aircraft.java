@@ -1,6 +1,7 @@
 package entity;
 
-import logic.airport.Sound;
+import constant.namesOfSounds;
+import utils.SoundCreator;
 
 public class Aircraft extends Plane {
 	private int seatings;// сидения
@@ -23,8 +24,9 @@ public class Aircraft extends Plane {
 
 	}
 
-	public void fly() {
-		Sound.playSound("1.wav").join();
+	public void soundOfFly() {
+		SoundCreator sound = new SoundCreator();
+		sound.playSound(namesOfSounds.aircraft_sound.getPath());
 	}
 
 	public int getSeatings() {
@@ -41,6 +43,36 @@ public class Aircraft extends Plane {
 
 	public void setLuggage(int luggage) {
 		this.luggage = luggage;
+	}
+
+	@Override
+	public String toString() {
+		return "Aircraft [seatings=" + seatings + ", luggage=" + luggage + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + luggage;
+		result = prime * result + seatings;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aircraft other = (Aircraft) obj;
+		if (luggage != other.luggage)
+			return false;
+		if (seatings != other.seatings)
+			return false;
+		return true;
 	}
 
 }

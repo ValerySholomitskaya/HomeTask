@@ -39,9 +39,9 @@ public class Main {
 		lookAllPlanes(airportManager.compareByRange());
 		System.out.println("Planes lies in range by fuel: ");
 		lookAllPlanes(airportManager.findByFuel(1, 13));
-		airportManager.flyAllPlanes();
-		airportManager.flyAircraftPlanes();
-		airportManager.flyFreighterPlanes();
+		airportManager.soundOfFlyAllPlanes();
+		airportManager.soundOfFlyAircraftPlanes();
+		airportManager.soundOfFlyFreighterPlanes();
 
 	}
 

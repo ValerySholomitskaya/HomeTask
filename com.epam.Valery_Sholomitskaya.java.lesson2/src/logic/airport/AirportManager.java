@@ -12,7 +12,7 @@ import entity.Plane;
 public class AirportManager {
 	Airport airport = new Airport();
 
-	private List<Plane> copyList() {
+	private List<Plane> copyAirport() {
 		List<Plane> copySet = new ArrayList<Plane>();
 		copySet.addAll(airport.getPlanes());
 		return copySet;
@@ -20,7 +20,7 @@ public class AirportManager {
 
 	private List<Plane> compareByFuel() {
 		Comparator compare = new Comparator();
-		return compare.compareByFuel(copyList());
+		return compare.compareByFuel(copyAirport());
 
 	}
 
@@ -88,7 +88,7 @@ public class AirportManager {
 	// функция сравнения самолетов по топливу
 	public List<Plane> compareByRange() {
 		Comparator compare = new Comparator();
-		return compare.compareByRange(copyList());
+		return compare.compareByRange(copyAirport());
 	}
 
 	// функция нахождения самолетов по диапазону горючего
@@ -145,28 +145,28 @@ public class AirportManager {
 	}
 
 	// функция полета
-	public void flyAllPlanes() {
+	public void soundOfFlyAllPlanes() {
 		for (Plane ob : airport.getPlanes()) {
 
-			ob.fly();
+			ob.soundOfFly();
 		}
 	}
 
 	// функция полета грузового самолета
-	public void flyFreighterPlanes() {
+	public void soundOfFlyFreighterPlanes() {
 		for (Plane ob : airport.getPlanes()) {
 			if (ob.getClass() == Freighter.class) {
-				ob.fly();
+				ob.soundOfFly();
 				break;
 			}
 		}
 	}
 
 	// функция полета пасажирского самолета
-	public void flyAircraftPlanes() {
+	public void soundOfFlyAircraftPlanes() {
 		for (Plane ob : airport.getPlanes()) {
 			if (ob.getClass() == Aircraft.class) {
-				ob.fly();
+				ob.soundOfFly();
 				break;
 			}
 		}
